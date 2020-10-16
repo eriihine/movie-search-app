@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  movies.api:
+    container_name: movies.api
+    build:
+      context: ./backend
+      target: production
+    ports:
+      - ${API_SERVER_PORT}:${API_SERVER_PORT}
+    command: npm run start:dev
+    env_file:
+      - .env
+    networks:
+      - webnet
+
+networks:
+  webnet:
+volumes:
+  pgdata:
