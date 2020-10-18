@@ -20,8 +20,11 @@ export class MovieController {
    * GET method to search movies from OMDB by search term
    */
   @Get()
-  async searchMovies(@Query('search') search: string): Promise<Movie[]> {
-    return await this.movieService.searchMovies(search);
+  async searchMovies(
+    @Query('search') search: string,
+    @Query('page') page: number,
+  ): Promise<Movie[]> {
+    return await this.movieService.searchMovies(search, page);
   }
 
   /**

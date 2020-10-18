@@ -10,14 +10,15 @@ export class MovieService {
   /**
    * Fetches movies matching search term from OMDB API
    */
-  async searchMovies(search: string): Promise<Movie[]> {
+  async searchMovies(search: string, page = 1): Promise<any> {
     try {
       const response = await axios.get(
-        `${URLS.OMDB}&s=${encodeURIComponent(search)}`,
+        `${URLS.OMDB}&s=${encodeURIComponent(search)}&page=${page}`,
       );
+      const maxPages = Math.ceil(response?.data?.totalResults / 10);
       const results = response?.data?.Search || [];
       const movies: Movie[] = results.map(result => new Movie(result));
-      return movies;
+      return { movies, maxPages };
     } catch (error) {
       this.logger.log(error);
       throw new BadRequestException();

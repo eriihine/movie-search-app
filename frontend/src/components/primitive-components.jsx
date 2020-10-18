@@ -21,8 +21,8 @@ export const Input = styled.input`
   background-color: ${(props) => props.theme.colors.background};
   border-color: ${(props) => props.theme.colors.borders[0]};
   :focus {
-    border-color: var(--theme-ui-colors-primary, #33ccff);
-    box-shadow: 0 0 0 2px var(--theme-ui-colors-primary, #33ccff);
+    border-color: ${(props) => props.theme.colors.lightBlue};
+    box-shadow: 0 0 0 2px ${(props) => props.theme.colors.lightBlue};
     outline: none;
   }
 `;
@@ -57,8 +57,7 @@ export const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   justify-items: center;
   grid-gap: 10px;
-  background-color: #fff;
-  color: #444;
+  background-color: ${(props) => props.theme.colors.white};
 `;
 
 export const Card = styled.div`
@@ -92,4 +91,22 @@ export const Image = styled.img`
   margin: 1rem;
   align-self: center;
   max-width: ${(props) => props.maxWidth || '200px'};
+`;
+
+export const Button = styled.button`
+  display: block;
+  overflow-anchor: none;
+  padding: 0.5rem 1rem;
+  border: 0px;
+  border-radius: 4px;
+  color: ${(props) => props.theme.colors.text};
+  background-color: ${(props) => props.theme.colors.background};
+  font-weight: 700;
+  margin: 1rem auto;
+  :focus {
+    outline: none;
+  }
+  :hover {
+    background-color: ${(props) => props.theme.colors.lightBlue};
+  }
 `;

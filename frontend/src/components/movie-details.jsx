@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Loader from 'react-loader-spinner';
 import { Card, Column, Heading, Image, Text } from './primitive-components';
 import { getMovieDetailsById } from '../api/api';
 import { useParams } from 'react-router-dom';
